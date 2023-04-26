@@ -1,5 +1,4 @@
 import Notiflix from "notiflix";
-import { Notify } from 'notiflix';
 
 // Функція для виконання HTTP-запиту на ресурс name і отримання масиву країн
 function fetchCountries(name) {
@@ -11,7 +10,7 @@ function fetchCountries(name) {
         .then(resp => {
             // Перевірка статусу відповіді
             if (!resp.ok) {
-               Notify.failure(`HTTP-помилка! Статус: ${resp.status}`);
+               Notiflix.Notify.failure(`HTTP-помилка! Статус: ${resp.status}`);
             }
             // Парсинг відповіді у форматі JSON та повернення результату
             return resp.json();
@@ -22,12 +21,9 @@ function fetchCountries(name) {
         })
         .catch(error => {
             // Обробка помилок
-            return Notify.failure('Помилка отримання даних:', error);
-            
+            Notiflix.Notify.failure('Помилка отримання даних:', error);
         });
 }
 
 // Експорт функції fetchCountries як іменованого експорту
 export { fetchCountries };
-
-Notify.failure("error")
