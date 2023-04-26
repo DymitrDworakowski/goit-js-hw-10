@@ -1,4 +1,5 @@
 import './css/styles.css';
+import Notiflix from 'notiflix';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -30,6 +31,7 @@ function fetchCountries(name) {
                 countryList.appendChild(countryItem);
             });
         })
+
         .catch(error => {
             console.error("Помилка отримання даних:", error);
         });
@@ -40,7 +42,7 @@ function displayCountryDetails(country) {
     <p><strong>Столиця:</strong> ${country.capital}</p>
     <p><strong>Населення:</strong> ${country.population}</p>
     <p><strong>Прапор:</strong></p>
-    <img src="${country.flags.svg}" alt="${country.name.official} flag" />
-    <p><strong>Мови:</strong> ${country.languages.join("") }</p>
+    <img src="${country.flags.svg}" alt="${country.name.official} flag"/>
+    <p><strong>Мови:</strong> ${country.languages.map(lang => lang.name).join(", ")}</p>
 `
 }
