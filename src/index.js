@@ -11,3 +11,18 @@ const countryInfo  = document.querySelector(".country-info");
 
 input.addEventListener("input", fetchCountries);
 
+function showCountryInfo(country) {
+    countryInfo.innerHTML = `
+    <h2>${country.name}</h2>
+    <p>Capital: ${country.capital}</p>
+    <p>Population: ${country.population}</p>
+    <p>Region: ${country.region}</p>
+    <p>Languages: ${country.languages.join(", ")}</p>
+    `;
+
+};
+
+function showCountryList(countries) {
+    countryList.innerHTML = "";
+    countries.forEach(showCountryInfo);
+};
