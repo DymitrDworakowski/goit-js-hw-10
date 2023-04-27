@@ -8,7 +8,8 @@ function fetchCountries(name) {
         .then(resp => {
     if (resp.status === 404) {
         Notiflix.Notify.failure('Oops, there is no country with that name');
-    }
+            }
+            console.log(resp.data);
     return resp.json();
     },
 );
